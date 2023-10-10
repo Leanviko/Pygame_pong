@@ -62,6 +62,10 @@ ball_speed_y = 7 * random.choice((1,-1))
 player_speed = 0
 opponent_speed = 7
 
+#Text Variables
+player_score = 0
+opponent_score = 0
+game_font = pygame.font.Font("freesansbold.ttf",32)
 
 
 
@@ -102,12 +106,15 @@ while True:
     opponent_AI()
     
     
-    #Draw rectangles 
+    #Draw rectangles- visuals
     screen.fill(bg_color)
     pygame.draw.rect(screen, light_grey,player)
     pygame.draw.rect(screen, light_grey,opponent)
     pygame.draw.ellipse(screen, light_grey,ball)
     pygame.draw.aaline(screen, light_grey,(screen_width/2,0),(screen_width/2,screen_height))
+
+    player_text = game_font.render(f"{player_score}",False,light_grey)
+    screen.blit(player_text,(660,470))
 
     pygame.display.flip()
     clock.tick(60)
